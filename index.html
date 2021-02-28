@@ -32,52 +32,203 @@
         
     </nav>
     <main id="main-doc">
+        <h1>SQL Database Documentation</h1>
         <section id="Create_or_Drop_Database" class="main-section">
-            <header>Create or Drop Database</header>
-            <p></p>
-            <p></p>
-            <code></code>
-            <li></li>
+            <header><h2>Create or Drop Database</h2></header>
+            <h3>The SQL CREATE DATABASE Statement</h3>
+            <p>The CREATE DATABASE statement is used to create a new SQL database.</p>
+            <code>CREATE DATABASE databasename;</code>
+            <p class= "Tips_Notes">Tip: Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database.</p>
+            <p >Tip: Make sure you have admin privilege before creating or dropping any database. Once a database is created or dropped, you can check it in the list of databases with the following SQL command: SHOW DATABASES;</p>
+            <h3>The SQL DROP DATABASE Statement</h3>
+            <p>The DROP DATABASE statement is used to drop an existing SQL database.</p>
+            <code>DROP DATABASE databasename;</code>
+            <p class= "Tips_Notes">Tip: Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database.</p>
+            <p >Note: Be careful before dropping a database. Deleting a database will result in loss of complete information stored in the database!</p>
 
         </section>
         <section id="Backup_Database" class="main-section">
-            <header>Backup Database</header>
-            <p></p>
-            <p></p>
-            <code></code>
-            <li></li>
+            <header><h2>Backup Database</h2></header>
+            <h3>The SQL BACKUP DATABASE Statement</h3>
+            <p>The BACKUP DATABASE statement is used in SQL Server to create a full back up of an existing SQL database.</p>
+            <code>BACKUP DATABASE databasename
+                TO DISK = 'filepath'; </code>
+            <h2>The SQL BACKUP WITH DIFFERENTIAL Statement</h2>
+            <p>A differential back up only backs up the parts of the database that have changed since the last full database backup.</p>
+            <code>BACKUP DATABASE databasename
+                TO DISK = 'filepath'
+                WITH DIFFERENTIAL; </code>
+                <p class= "Tips_Notes">Tip: Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database.</p>
+                <p class="Tips_Notes">Tip: A differential back up reduces the back up time (since only the changes are backed up).</p>
 
         </section>
         <section id="Create_or_Drop_Table" class="main-section">
-            <header>Create or Drop Table</header>
-            <p></p>
-            <p></p>
-            <code></code>
-            <li></li>
+            <header><h2>Create or Drop Table</h2></header>
+            <h3>The SQL CREATE TABLE Statement</h3>
+            <p>The CREATE TABLE statement is used to create a new table in a database.</p>
+            <code>CREATE TABLE table_name (
+                column1 datatype,
+                column2 datatype,
+                column3 datatype,
+               ....
+            ); </code>
+            <p>The column parameters specify the names of the columns of the table.
+                The datatype parameter specifies the type of data the column can hold (e.g. varchar, integer, date, etc.).</p>
+                <p class= "Tips_Notes">Tip: For an overview of the available data types, go to our complete Data Types Reference.</p>
+                <h3>Create Table Using Another Table</h3>
+                <p>A copy of an existing table can also be created using CREATE TABLE.
 
+                    The new table gets the same column definitions. All columns or specific columns can be selected.
+                    
+                    If you create a new table using an existing table, the new table will be filled with the existing values from the old table.</p>
+                    <code>CREATE TABLE new_table_name AS
+                        SELECT column1, column2,...
+                        FROM existing_table_name
+                        WHERE ....; </code>
+                        <h3>The SQL DROP TABLE Statement</h3>
+                        <p>The DROP TABLE statement is used to drop an existing table in a database.</p>
+                        <code>DROP TABLE table_name;</code>
+                        <p class= "Tips_Notes">Note: Be careful before dropping a table. Deleting a table will result in loss of complete information stored in the table!</p>
+                        <h3>SQL TRUNCATE TABLE</h3>
+                        <p>The TRUNCATE TABLE statement is used to delete the data inside a table, but not the table itself.</p>
+                        <code>TRUNCATE TABLE table_name;</code>
         </section>
         <section id="Altar_Table" class="main-section">
-            <header>Altar Table</header>
-            <p></p>
-            <p></p>
-            <code></code>
-            <li></li>
+            <header><h2>Altar Table</h2></header>
+            <h3>SQL ALTER TABLE Statement</h3>
+            <p>The ALTER TABLE statement is used to add, delete, or modify columns in an existing table.
+
+                The ALTER TABLE statement is also used to add and drop various constraints on an existing table.
+            
+                To add a column in a table, use the following syntax:</p>
+            <code>ALTER TABLE table_name
+                ADD column_name datatype;</code>
+            <h3>ALTER TABLE - DROP COLUMN</h3>
+            <p>To delete a column in a table, use the following syntax (notice that some database systems don't allow deleting a column):</p>
+            <code>ALTER TABLE table_name
+                DROP COLUMN column_name;</code>
+                <h3>ALTER TABLE - ALTER/MODIFY COLUMN</h3>
+                <p>To change the data type of a column in a table, use the following syntax:
+
+                    SQL Server / MS Access:</p>
+                    <code>ALTER TABLE table_name
+                        ALTER COLUMN column_name datatype;</code>
+                        <p>My SQL / Oracle (prior version 10G):</p>
+                        <code>ALTER TABLE table_name
+                            MODIFY COLUMN column_name datatype;</code>
+                            <p>Oracle 10G and later:</p>
+                            <code>ALTER TABLE table_name
+                                MODIFY column_name datatype;</code>
+                    
 
         </section>
         <section id="Constraints" class="main-section">
-            <header>Constraints</header>
-            <p></p>
-            <p></p>
-            <code></code>
-            <li></li>
+            <header><h2>Constraints</h2></header>
+            <h3>SQL Create Constraints</h3>
+            <p>SQL constraints are used to specify rules for data in a table.
+                Constraints can be specified when the table is created with the CREATE TABLE statement, or after the table is created with the ALTER TABLE statement.</p>
+            <code>CREATE TABLE table_name (
+                column1 datatype constraint,
+                column2 datatype constraint,
+                column3 datatype constraint,
+                ....
+            );</code>
+            <h3>SQL Constraints</h3>
+            <p>SQL constraints are used to specify rules for the data in a table.
+
+                Constraints are used to limit the type of data that can go into a table. This ensures the accuracy and reliability of the data in the table. If there is any violation between the constraint and the data action, the action is aborted.
+                
+                Constraints can be column level or table level. Column level constraints apply to a column, and table level constraints apply to the whole table.
+                
+                The following constraints are commonly used in SQL:</p>
+            <ul>
+                <li>NOT NULL - Ensures that a column cannot have a NULL value</li>
+                <li>UNIQUE - Ensures that all values in a column are different</li>
+                <li>PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table</li>
+                <li>FOREIGN KEY - Uniquely identifies a row/record in another table</li>
+                <li>CHECK - Ensures that all values in a column satisfies a specific condition</li>
+                <li>DEFAULT - Sets a default value for a column when no value is specified</li>
+                <li>INDEX - Used to create and retrieve data from the database very quickly</li>
+            </ul>
 
         </section>
         <section id="Not_Null_and_Unique" class="main-section">
-            <header>Not Null and Unique</header>
-            <p></p>
-            <p></p>
-            <code></code>
-            <li></li>
+            <header><h2>Not Null and Unique</h2></header>
+            <h3>SQL NOT NULL Constraint</h3>
+            <p>By default, a column can hold NULL values.
+
+                The NOT NULL constraint enforces a column to NOT accept NULL values.
+                
+                This enforces a field to always contain a value, which means that you cannot insert a new record, or update a record without adding a value to this field.</p>
+                <h3>SQL NOT NULL on CREATE TABLE</h3>
+            <p>The following SQL ensures that the "ID", "LastName", and "FirstName" columns will NOT accept NULL values when the "Persons" table is created:</p>
+            <code>CREATE TABLE Persons (
+                ID int NOT NULL,
+                LastName varchar(255) NOT NULL,
+                FirstName varchar(255) NOT NULL,
+                Age int
+            ); </code>
+            <h3>SQL NOT NULL on ALTER TABLE</h3>
+            <p>To create a NOT NULL constraint on the "Age" column when the "Persons" table is already created, use the following SQL:</p>
+            <code>ALTER TABLE Persons
+                MODIFY Age int NOT NULL;</code>
+                <h3>SQL UNIQUE Constraint</h3>
+                <p>The UNIQUE constraint ensures that all values in a column are different.
+
+                    Both the UNIQUE and PRIMARY KEY constraints provide a guarantee for uniqueness for a column or set of columns.
+                    
+                    A PRIMARY KEY constraint automatically has a UNIQUE constraint.
+                    
+                    However, you can have many UNIQUE constraints per table, but only one PRIMARY KEY constraint per table.</p>
+                    <h3>SQL UNIQUE Constraint on CREATE TABLE</h3>
+                    <p>The following SQL creates a UNIQUE constraint on the "ID" column when the "Persons" table is created:
+
+                        SQL Server / Oracle / MS Access:</p>
+                        <code>CREATE TABLE Persons (
+                            ID int NOT NULL UNIQUE,
+                            LastName varchar(255) NOT NULL,
+                            FirstName varchar(255),
+                            Age int
+                        );</code>
+                        <p>MySQL:</p>
+                        <code>CREATE TABLE Persons (
+                            ID int NOT NULL,
+                            LastName varchar(255) NOT NULL,
+                            FirstName varchar(255),
+                            Age int,
+                            UNIQUE (ID)
+                        ); </code>
+                        <p>To name a UNIQUE constraint, and to define a UNIQUE constraint on multiple columns, use the following SQL syntax:
+
+                            MySQL / SQL Server / Oracle / MS Access:</p>
+                            <code>CREATE TABLE Persons (
+                                ID int NOT NULL,
+                                LastName varchar(255) NOT NULL,
+                                FirstName varchar(255),
+                                Age int,
+                                CONSTRAINT UC_Person UNIQUE (ID,LastName)
+                            ); </code>
+                            <h3>SQL UNIQUE Constraint on ALTER TABLE</h3>
+                            <p>To create a UNIQUE constraint on the "ID" column when the table is already created, use the following SQL:
+
+                                MySQL / SQL Server / Oracle / MS Access:</p>
+                                <code>ALTER TABLE Persons
+                                    ADD UNIQUE (ID); </code>
+                                    <p>To name a UNIQUE constraint, and to define a UNIQUE constraint on multiple columns, use the following SQL syntax:
+
+                                        MySQL / SQL Server / Oracle / MS Access:</p>
+                                        <code>ALTER TABLE Persons
+                                            ADD CONSTRAINT UC_Person UNIQUE (ID,LastName); </code>
+                                            <h3>DROP a UNIQUE Constraint</h3>
+                                            <p>To drop a UNIQUE constraint, use the following SQL:
+
+                                                MySQL:</p>
+                                                <code>ALTER TABLE Persons
+                                                    DROP INDEX UC_Person; </code>
+                                                <p>SQL Server / Oracle / MS Access:</p>
+                                                <code>ALTER TABLE Persons
+                                                    DROP CONSTRAINT UC_Person; </code>
+                                                    
 
         </section>
         <section id="Primary_Key" class="main-section">
