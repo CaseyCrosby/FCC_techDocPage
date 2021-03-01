@@ -28,7 +28,7 @@
         <a class="nav-link" href="#Injection">Injection</a>
         <a class="nav-link" href="#Hosting">Hosting</a>
         <a class="nav-link" href="#Data_Types">Data Types</a>
-        <a class="nav-link" href="#Reference">Data Types</a>
+        <a class="nav-link" href="#Reference">Reference</a>
         
     </nav>
     <main id="main-doc">
@@ -599,43 +599,174 @@
 
         </section>
         <section id="Veiws" class="main-section">
-            <header>Veiws</header>
-            <p></p>
-            <p></p>
-            <code></code>
-            <li></li>
+            <header><h2>Veiws</h2></header>
+            <h3>SQL CREATE VIEW Statement</h3>
+            <p>In SQL, a view is a virtual table based on the result-set of an SQL statement.
+
+                A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
+                
+                You can add SQL functions, WHERE, and JOIN statements to a view and present the data as if the data were coming from one single table.</p>
+                <code>CREATE VIEW view_name AS
+                    SELECT column1, column2, ...
+                    FROM table_name
+                    WHERE condition; </code>
+            <p class="Tips_Notes">Note: A view always shows up-to-date data! The database engine recreates the data, using the view's SQL statement, every time a user queries a view.</p>
+            <h3>SQL Updating a View</h3>
+            <p>A view can be updated with the CREATE OR REPLACE VIEW command.
+                SQL CREATE OR REPLACE VIEW Syntax</p>
+            <code>CREATE OR REPLACE VIEW view_name AS
+                SELECT column1, column2, ...
+                FROM table_name
+                WHERE condition; </code>
+                <h3>SQL Dropping a View</h3>
+                <p>A view is deleted with the DROP VIEW command.
+                    SQL DROP VIEW Syntax</p>
+                    <code>DROP VIEW view_name; </code>
+            
 
         </section>
         <section id="Injection" class="main-section">
-            <header>Injection</header>
-            <p></p>
-            <p></p>
-            <code></code>
+            <header><h2>Injection</h2></header>
+            <h3>SQL Injection</h3>
+            <p>SQL injection is a code injection technique that might destroy your database.
+
+                SQL injection is one of the most common web hacking techniques.
+                
+                SQL injection is the placement of malicious code in SQL statements, via web page input.</p>
+                <h3>SQL in Web Pages</h3>
+            <p>SQL injection usually occurs when you ask a user for input, like their username/userid, and instead of a name/id, the user gives you an SQL statement that you will unknowingly run on your database.
+
+                Look at the following example which creates a SELECT statement by adding a variable (txtUserId) to a select string. The variable is fetched from user input (getRequestString):</p>
+            <code>txtUserId = getRequestString("UserId");
+                txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;</code>
+                <h3>SQL Injection Based on 1=1 is Always True</h3>
+                <p>Look at the example above again. The original purpose of the code was to create an SQL statement to select a user, with a given user id.
+
+                    If there is nothing to prevent a user from entering "wrong" input, the user can enter some "smart" input like this:</p>
+                    <p>UserId: 105 OR 1=1
+
+                        Then, the SQL statement will look like this:</p>
+                        <code>SELECT * FROM Users WHERE UserId = 105 OR 1=1; </code>
+                        <p>
+                            SELECT * FROM Users WHERE UserId = 105 OR 1=1;
+                            
+                            The SQL above is valid and will return ALL rows from the "Users" table, since OR 1=1 is always TRUE.
+                            
+                            Does the example above look dangerous? What if the "Users" table contains names and passwords?
+                            
+                            The SQL statement above is much the same as this:</p>
+                            <code>SELECT UserId, Name, Password FROM Users WHERE UserId = 105 or 1=1; </code>
+                            <p>A hacker might get access to all the user names and passwords in a database, by simply inserting 105 OR 1=1 into the input field.</p>
+                            <h3>SQL Injection Based on ""="" is Always True</h3>
+                            <p>Here is an example of a user login on a web site:
+
+                                Username: John Doe
+                                
+                                Password: myPass
+                                </p>
+                                <code>uName = getRequestString("username");
+                                    uPass = getRequestString("userpassword");
+                                    
+                                    sql = 'SELECT * FROM Users WHERE Name ="' + uName + '" AND Pass ="' + uPass + '"'</code>
+                                    <code>uName = getRequestString("username");
+                                        uPass = getRequestString("userpassword");
+                                        
+                                        sql = 'SELECT * FROM Users WHERE Name ="' + uName + '" AND Pass ="' + uPass + '"'</code>
+                                        <p> A hacker might get access to user names and passwords in a database by simply inserting " OR ""=" into the user name or password text box:
+
+                                            User Name: "OR""="
+                                            
+                                            Password: "OR""="
+                                            
+                                            The code at the server will create a valid SQL statement like this:</p>
+                                            <code> SELECT * FROM Users WHERE Name ="" or ""="" AND Pass ="" or ""="" </code>
+                                            <p>The SQL above is valid and will return all rows from the "Users" table, since OR ""="" is always TRUE.</p>
+                                            <h3>SQL Injection Based on Batched SQL Statements</h3>
+                                            <p>Most databases support batched SQL statement.
+
+                                                A batch of SQL statements is a group of two or more SQL statements, separated by semicolons.
+                                                
+                                                The SQL statement below will return all rows from the "Users" table, then delete the "Suppliers" table.</p>
+                                                <code>SELECT * FROM Users; DROP TABLE Suppliers </code>
+                                                <p>Look at the following example: </p>
+                                                <code>txtUserId = getRequestString("UserId");
+                                                    txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;</code>
+                                                    <p>And the following input:
+
+                                                        User id: 105; DROP TABLE Suppliers
+                                                        
+                                                        The valid SQL statement would look like this:</p>
+                                                        <code>SELECT * FROM Users WHERE UserId = 105; DROP TABLE Suppliers; </code>
+                                                        <h3>Use SQL Parameters for Protection</h3>
+                                                        <p>To protect a web site from SQL injection, you can use SQL parameters.
+
+                                                            SQL parameters are values that are added to an SQL query at execution time, in a controlled manner.</p>
+                                                            <p>ASP.NET Razor Example</p>
+                                                            <code>txtUserId = getRequestString("UserId");
+                                                                txtSQL = "SELECT * FROM Users WHERE UserId = @0";
+                                                                db.Execute(txtSQL,txtUserId);</code>
+                                                                <p>Note that parameters are represented in the SQL statement by a @ marker.
+
+                                                                    The SQL engine checks each parameter to ensure that it is correct for its column and are treated literally, and not as part of the SQL to be executed.
+                                                                
+                                                                Another Example</p>
+                                                                <code>txtNam = getRequestString("CustomerName");
+                                                                    txtAdd = getRequestString("Address");
+                                                                    txtCit = getRequestString("City");
+                                                                    txtSQL = "INSERT INTO Customers (CustomerName,Address,City) Values(@0,@1,@2)";
+                                                                    db.Execute(txtSQL,txtNam,txtAdd,txtCit);</code>
             <li></li>
 
         </section>
         <section id="Hosting" class="main-section">
-            <header>Hosting</header>
-            <p></p>
-            <p></p>
-            <code></code>
-            <li></li>
+            <header><h2>Hosting</h2></header>
+            <h3>SQL Hosting</h3>
+            <p>If you want your web site to be able to store and retrieve data from a database, your web server should have access to a database-system that uses the SQL language.
+
+                If your web server is hosted by an Internet Service Provider (ISP), you will have to look for SQL hosting plans.
+                
+                The most common SQL hosting databases are MS SQL Server, Oracle, MySQL, and MS Access.</p>
+                <h3>MS SQL Server</h3>
+            <p>Microsoft's SQL Server is a popular database software for database-driven web sites with high traffic.
+
+                SQL Server is a very powerful, robust and full featured SQL database system.</p>
+                <h3>Oracle</h3>
+                <p>Oracle is also a popular database software for database-driven web sites with high traffic.
+
+                    Oracle is a very powerful, robust and full featured SQL database system.</p>
+                    <h3>MySQL</h3>
+                    <p>MySQL is also a popular database software for web sites.
+
+                        MySQL is a very powerful, robust and full featured SQL database system.
+                        
+                        MySQL is an inexpensive alternative to the expensive Microsoft and Oracle solutions.</p>
+                        <h3>Access</h3>
+                        <p>When a web site requires only a simple database, Microsoft Access can be a solution.
+
+                            Access is not well suited for very high-traffic, and not as powerful as MySQL, SQL Server, or Oracle.</p>
 
         </section>
         <section id="Data_Types" class="main-section">
-            <header>Data Types</header>
-            <p></p>
-            <p></p>
-            <code></code>
-            <li></li>
+            <header><h2>Data Types</h2></header>
+            <h3>SQL Data Types for MySQL, SQL Server, and MS Access</h3>
+            <p>The data type of a column defines what value the column can hold: integer, character, money, date and time, binary, and so on.</p>
+            <h3>SQL Data Types</h3>
+            <p>Each column in a database table is required to have a name and a data type.
+
+                An SQL developer must decide what type of data that will be stored inside each column when creating a table. The data type is a guideline for SQL to understand what type of data is expected inside of each column, and it also identifies how SQL will interact with the stored data.</p>
+                <p class="Tips_Notes">
+                Note: Data types might have different names in different database. And even if the name is the same, the size and other details may be different! Always check the documentation!
+                    </p>
+                    <ul>
+                        <li>SQL Data Type Tables <a href="https://www.w3schools.com/sql/sql_datatypes.asp" target="_blank">Here</a></li>
+                    </ul>
 
         </section>
         <section id="Reference" class="main-section">
             <header>Reference</header>
-            <p></p>
-            <p></p>
-            <code></code>
-            <li></li>
+            <ul>
+                <li>All the documentation in this page is taken from <a href="https://www.w3schools.com/" target="_blank">W3Schools</a></li>
+            </ul>
 
         </section>
     </main>
