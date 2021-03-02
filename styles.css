@@ -6,29 +6,34 @@ body {
     margin: 0;
     padding: 0;
 }
-.nav_ul {
+#navbar {
     margin: 0;
     padding: 0;
     width: 20%;
     background-color: #f1f1f1;
     position: fixed;
-    height: 90%;
-    overflow: auto;
-    margin-top: 5em;
-}
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-right: 2px solid black;
+}   
 
 #navbar header {
     text-align: center;
     background-color: teal;
     position: fixed;
-    padding: 0;
-    height: 13%;
+    padding-top: 2%;
+    height: 8%;
     width: 20%;
     z-index: 1;
+    outline: 2px solid black;
+    
 }
 
 .nav_ul {
     list-style: none;
+    margin-top: 30%;
+    padding: 0;
 }
 
 .nav_ul li a {
@@ -47,5 +52,15 @@ h1 {
 }
 
 #main-doc {
-    margin-left: 21%;
+    margin-left: 20%;
+    padding: 1em;
+    
+}
+
+code {
+    display: block;
+    background-color: rgb(214, 214, 214);
+    border-radius: 5%;
+    padding: 2em;
+    width: auto;
 }
