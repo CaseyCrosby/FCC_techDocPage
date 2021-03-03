@@ -22,12 +22,20 @@ body {
     text-align: center;
     background-color: teal;
     position: fixed;
-    padding-top: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
     height: 8%;
     width: 20%;
     z-index: 1;
     outline: 2px solid black;
-    
+    font-weight: bolder;
+}
+
+.nav-top {
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    outline: none;
 }
 
 .nav_ul {
@@ -39,10 +47,13 @@ body {
 .nav_ul li a {
     display: block;
     color: #000;
-    padding: 8px 16px;
+    padding: 16px 16px;
     text-decoration: none;
-    border-top: .5px solid black;
-   
+    border-top: .5px solid black; 
+}
+
+ .nav_ul li:hover {
+    background-color: rgb(197, 195, 195);
 }
 
 h1 {
@@ -61,6 +72,8 @@ h2 {
 
 h3 {
     padding-left: 2em;
+    padding-bottom: 0;
+    padding-top: 1em;
 }
 
 #main-doc {
@@ -71,6 +84,7 @@ h3 {
 
 .main-section p {
     padding: 2em;
+    padding-top: 1em;
 }
 
 .Tips_Notes {
@@ -79,8 +93,10 @@ h3 {
 
 code {
     display: block;
-    background-color: black;
-    color: blanchedalmond;
+    background-color: rgb(54, 54, 54);
+    color: teal;
+    font-weight: 1000;
+    letter-spacing: 1%;
     border-radius: ;
     padding: 2em;
     margin: 1em;

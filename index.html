@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav id="navbar">
-        <header>SQL Database Documentation</header>
+        <header><a class="nav-top" href="#">SQL Database Documentation</a></header>
         <ul class="nav_ul">
         <li><a class="nav-link" href="#Create_or_Drop_Database">Create or Drop Database</a></li>
         <li><a class="nav-link" href="#Backup_Database">Backup Database</a></li>
@@ -40,12 +40,12 @@
             <p>The CREATE DATABASE statement is used to create a new SQL database.</p>
             <code>CREATE DATABASE databasename;</code>
             <p class= "Tips_Notes">Tip: Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database.</p>
-            <p >Tip: Make sure you have admin privilege before creating or dropping any database. Once a database is created or dropped, you can check it in the list of databases with the following SQL command: SHOW DATABASES;</p>
+            <p class="Tips_Notes">Tip: Make sure you have admin privilege before creating or dropping any database. Once a database is created or dropped, you can check it in the list of databases with the following SQL command: SHOW DATABASES;</p>
             <h3>The SQL DROP DATABASE Statement</h3>
             <p>The DROP DATABASE statement is used to drop an existing SQL database.</p>
             <code>DROP DATABASE databasename;</code>
             <p class= "Tips_Notes">Tip: Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database.</p>
-            <p >Note: Be careful before dropping a database. Deleting a database will result in loss of complete information stored in the database!</p>
+            <p class="Tips_Notes" >Note: Be careful before dropping a database. Deleting a database will result in loss of complete information stored in the database!</p>
 
         </section>
         <section id="Backup_Database" class="main-section">
@@ -53,13 +53,13 @@
             <h3>The SQL BACKUP DATABASE Statement</h3>
             <p>The BACKUP DATABASE statement is used in SQL Server to create a full back up of an existing SQL database.</p>
             <code>BACKUP DATABASE databasename
-                TO DISK = 'filepath'; </code>
+                  TO DISK = 'filepath'; </code>
             <h2>The SQL BACKUP WITH DIFFERENTIAL Statement</h2>
             <p>A differential back up only backs up the parts of the database that have changed since the last full database backup.</p>
             <code>BACKUP DATABASE databasename
                 TO DISK = 'filepath'
                 WITH DIFFERENTIAL; </code>
-                <p class= "Tips_Notes">Tip: Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database.</p>
+                <p class="Tips_Notes">Tip: Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database.</p>
                 <p class="Tips_Notes">Tip: A differential back up reduces the back up time (since only the changes are backed up).</p>
 
         </section>
@@ -68,14 +68,14 @@
             <h3>The SQL CREATE TABLE Statement</h3>
             <p>The CREATE TABLE statement is used to create a new table in a database.</p>
             <code>CREATE TABLE table_name (
-                column1 datatype,
-                column2 datatype,
-                column3 datatype,
-               ....
-            ); </code>
+                  column1 datatype,
+                  column2 datatype,
+                  column3 datatype,
+                  ....
+                  ); </code>
             <p>The column parameters specify the names of the columns of the table.
                 The datatype parameter specifies the type of data the column can hold (e.g. varchar, integer, date, etc.).</p>
-                <p class= "Tips_Notes">Tip: For an overview of the available data types, go to our complete Data Types Reference.</p>
+                <p class="Tips_Notes">Tip: For an overview of the available data types, go to our complete Data Types Reference.</p>
                 <h3>Create Table Using Another Table</h3>
                 <p>A copy of an existing table can also be created using CREATE TABLE.
 
@@ -83,13 +83,13 @@
                     
                     If you create a new table using an existing table, the new table will be filled with the existing values from the old table.</p>
                     <code>CREATE TABLE new_table_name AS
-                        SELECT column1, column2,...
-                        FROM existing_table_name
-                        WHERE ....; </code>
+                          SELECT column1, column2,...
+                          FROM existing_table_name
+                          WHERE ....; </code>
                         <h3>The SQL DROP TABLE Statement</h3>
                         <p>The DROP TABLE statement is used to drop an existing table in a database.</p>
                         <code>DROP TABLE table_name;</code>
-                        <p class= "Tips_Notes">Note: Be careful before dropping a table. Deleting a table will result in loss of complete information stored in the table!</p>
+                        <p class="Tips_Notes">Note: Be careful before dropping a table. Deleting a table will result in loss of complete information stored in the table!</p>
                         <h3>SQL TRUNCATE TABLE</h3>
                         <p>The TRUNCATE TABLE statement is used to delete the data inside a table, but not the table itself.</p>
                         <code>TRUNCATE TABLE table_name;</code>
