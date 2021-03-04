@@ -624,42 +624,54 @@
                 By default, the starting value for AUTO_INCREMENT is 1, and it will increment by 1 for each new record.
                 
                 To let the AUTO_INCREMENT sequence start with another value, use the following SQL statement:</p>
-            <code>ALTER TABLE Persons AUTO_INCREMENT=100; </code>
+            <pre><code>
+                ALTER TABLE Persons AUTO_INCREMENT=100; 
+            </code></pre>
             <p>To insert a new record into the "Persons" table, we will NOT have to specify a value for the "Personid" column (a unique value will be added automatically):</p>
-            <code>INSERT INTO Persons (FirstName,LastName)
-                VALUES ('Lars','Monsen'); </code>
+            <pre><code>
+                INSERT INTO Persons (FirstName,LastName)
+                VALUES ('Lars','Monsen'); 
+            </code></pre>
                 <p>The SQL statement above would insert a new record into the "Persons" table. The "Personid" column would be assigned a unique value. The "FirstName" column would be set to "Lars" and the "LastName" column would be set to "Monsen".</p>
                 <h3>Syntax for SQL Server</h3>
                 <p>The following SQL statement defines the "Personid" column to be an auto-increment primary key field in the "Persons" table:</p>
-                <code>CREATE TABLE Persons (
+                <pre><code>
+                    CREATE TABLE Persons (
                     Personid int IDENTITY(1,1) PRIMARY KEY,
                     LastName varchar(255) NOT NULL,
                     FirstName varchar(255),
                     Age int
-                ); </code>
+                    ); 
+                </code></pre>
                 <p>The MS SQL Server uses the IDENTITY keyword to perform an auto-increment feature.
 
                     In the example above, the starting value for IDENTITY is 1, and it will increment by 1 for each new record.</p>
                     <p class="Tips_Notes">Tip: To specify that the "Personid" column should start at value 10 and increment by 5, change it to IDENTITY(10,5).</p>
                     <p>To insert a new record into the "Persons" table, we will NOT have to specify a value for the "Personid" column (a unique value will be added automatically):</p>
-                    <code>INSERT INTO Persons (FirstName,LastName)
-                        VALUES ('Lars','Monsen'); </code>
+                    <pre><code>
+                        INSERT INTO Persons (FirstName,LastName)
+                        VALUES ('Lars','Monsen'); 
+                    </code></pre>
                         <p>The SQL statement above would insert a new record into the "Persons" table. The "Personid" column would be assigned a unique value. The "FirstName" column would be set to "Lars" and the "LastName" column would be set to "Monsen".</p>
                         <h3>Syntax for Access</h3>
                         <p>The following SQL statement defines the "Personid" column to be an auto-increment primary key field in the "Persons" table:</p>
-                        <code>CREATE TABLE Persons (
+                        <pre><code>
+                            CREATE TABLE Persons (
                             Personid AUTOINCREMENT PRIMARY KEY,
                             LastName varchar(255) NOT NULL,
                             FirstName varchar(255),
                             Age int
-                        ); </code>
+                            ); 
+                        </code></pre>
                         <p>The MS Access uses the AUTOINCREMENT keyword to perform an auto-increment feature.
 
                             By default, the starting value for AUTOINCREMENT is 1, and it will increment by 1 for each new record.</p>
                             <p class="Tips_Notes">Tip: To specify that the "Personid" column should start at value 10 and increment by 5, change the autoincrement to AUTOINCREMENT(10,5).</p>
                             <p>To insert a new record into the "Persons" table, we will NOT have to specify a value for the "Personid" column (a unique value will be added automatically):</p>
-                            <code>INSERT INTO Persons (FirstName,LastName)
-                                VALUES ('Lars','Monsen'); </code>
+                            <pre><code>
+                                INSERT INTO Persons (FirstName,LastName)
+                                VALUES ('Lars','Monsen'); 
+                            </code></pre>
                                 <p>The SQL statement above would insert a new record into the "Persons" table. The "Personid" column would be assigned a unique value. The "FirstName" column would be set to "Lars" and the "LastName" column would be set to "Monsen".</p>
                                 <h3>Syntax for Oracle</h3>
                                 <p>In Oracle the code is a little bit more tricky.
@@ -667,16 +679,20 @@
                                     You will have to create an auto-increment field with the sequence object (this object generates a number sequence).
                                     
                                     Use the following CREATE SEQUENCE syntax:</p>
-                                    <code>CREATE SEQUENCE seq_person
+                                    <pre><code>
+                                        CREATE SEQUENCE seq_person
                                         MINVALUE 1
                                         START WITH 1
                                         INCREMENT BY 1
-                                        CACHE 10; </code>
+                                        CACHE 10; 
+                                    </code></pre>
                                         <p>The code above creates a sequence object called seq_person, that starts with 1 and will increment by 1. It will also cache up to 10 values for performance. The cache option specifies how many sequence values will be stored in memory for faster access.
 
                                             To insert a new record into the "Persons" table, we will have to use the nextval function (this function retrieves the next value from seq_person sequence):</p>
-                                            <code>INSERT INTO Persons (Personid,FirstName,LastName)
-                                                VALUES (seq_person.nextval,'Lars','Monsen'); </code>
+                                            <pre><code>
+                                                INSERT INTO Persons (Personid,FirstName,LastName)
+                                                VALUES (seq_person.nextval,'Lars','Monsen'); 
+                                            </code></pre>
                                                 <p>The SQL statement above would insert a new record into the "Persons" table. The "Personid" column would be assigned the next number from the seq_person sequence. The "FirstName" column would be set to "Lars" and the "LastName" column would be set to "Monsen".</p>
 
         </section>
@@ -701,8 +717,8 @@
                 <li>TIMESTAMP - format: a unique number</li>
             </ul>
             <p class="Tips_Notes">Note: The date types are chosen for a column when you create a new table in your database!</p>
-            <code></code>
-            <li></li>
+            
+            
 
         </section>
         <section id="Veiws" class="main-section">
@@ -713,22 +729,28 @@
                 A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
                 
                 You can add SQL functions, WHERE, and JOIN statements to a view and present the data as if the data were coming from one single table.</p>
-                <code>CREATE VIEW view_name AS
+                <pre><code>
+                    CREATE VIEW view_name AS
                     SELECT column1, column2, ...
                     FROM table_name
-                    WHERE condition; </code>
+                    WHERE condition; 
+                </code></pre>
             <p class="Tips_Notes">Note: A view always shows up-to-date data! The database engine recreates the data, using the view's SQL statement, every time a user queries a view.</p>
             <h3>SQL Updating a View</h3>
             <p>A view can be updated with the CREATE OR REPLACE VIEW command.
                 SQL CREATE OR REPLACE VIEW Syntax</p>
-            <code>CREATE OR REPLACE VIEW view_name AS
+            <pre><code>
+                CREATE OR REPLACE VIEW view_name AS
                 SELECT column1, column2, ...
                 FROM table_name
-                WHERE condition; </code>
+                WHERE condition; 
+            </code></pre>
                 <h3>SQL Dropping a View</h3>
                 <p>A view is deleted with the DROP VIEW command.
                     SQL DROP VIEW Syntax</p>
-                    <code>DROP VIEW view_name; </code>
+                    <pre><code>
+                        DROP VIEW view_name; 
+                    </code></pre>
             
 
         </section>
@@ -744,8 +766,10 @@
             <p>SQL injection usually occurs when you ask a user for input, like their username/userid, and instead of a name/id, the user gives you an SQL statement that you will unknowingly run on your database.
 
                 Look at the following example which creates a SELECT statement by adding a variable (txtUserId) to a select string. The variable is fetched from user input (getRequestString):</p>
-            <code>txtUserId = getRequestString("UserId");
-                txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;</code>
+            <pre><code>
+                txtUserId = getRequestString("UserId");
+                txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;
+            </code></pre>
                 <h3>SQL Injection Based on 1=1 is Always True</h3>
                 <p>Look at the example above again. The original purpose of the code was to create an SQL statement to select a user, with a given user id.
 
@@ -753,7 +777,9 @@
                     <p>UserId: 105 OR 1=1
 
                         Then, the SQL statement will look like this:</p>
-                        <code>SELECT * FROM Users WHERE UserId = 105 OR 1=1; </code>
+                        <pre><code>
+                            SELECT * FROM Users WHERE UserId = 105 OR 1=1; 
+                        </code></pre>
                         <p>
                             SELECT * FROM Users WHERE UserId = 105 OR 1=1;
                             
@@ -762,7 +788,9 @@
                             Does the example above look dangerous? What if the "Users" table contains names and passwords?
                             
                             The SQL statement above is much the same as this:</p>
-                            <code>SELECT UserId, Name, Password FROM Users WHERE UserId = 105 or 1=1; </code>
+                            <pre><code>
+                                SELECT UserId, Name, Password FROM Users WHERE UserId = 105 or 1=1; 
+                            </code></pre>
                             <p>A hacker might get access to all the user names and passwords in a database, by simply inserting 105 OR 1=1 into the input field.</p>
                             <h3>SQL Injection Based on ""="" is Always True</h3>
                             <p>Here is an example of a user login on a web site:
@@ -771,14 +799,18 @@
                                 
                                 Password: myPass
                                 </p>
-                                <code>uName = getRequestString("username");
+                                <pre><code>
+                                    uName = getRequestString("username");
                                     uPass = getRequestString("userpassword");
                                     
-                                    sql = 'SELECT * FROM Users WHERE Name ="' + uName + '" AND Pass ="' + uPass + '"'</code>
-                                    <code>uName = getRequestString("username");
+                                    sql = 'SELECT * FROM Users WHERE Name ="' + uName + '" AND Pass ="' + uPass + '"'
+                                </code></pre>
+                                    <pre><code>
+                                        uName = getRequestString("username");
                                         uPass = getRequestString("userpassword");
                                         
-                                        sql = 'SELECT * FROM Users WHERE Name ="' + uName + '" AND Pass ="' + uPass + '"'</code>
+                                        sql = 'SELECT * FROM Users WHERE Name ="' + uName + '" AND Pass ="' + uPass + '"'
+                                    </code></pre>
                                         <p> A hacker might get access to user names and passwords in a database by simply inserting " OR ""=" into the user name or password text box:
 
                                             User Name: "OR""="
@@ -786,7 +818,9 @@
                                             Password: "OR""="
                                             
                                             The code at the server will create a valid SQL statement like this:</p>
-                                            <code> SELECT * FROM Users WHERE Name ="" or ""="" AND Pass ="" or ""="" </code>
+                                            <pre><code> 
+                                                SELECT * FROM Users WHERE Name ="" or ""="" AND Pass ="" or ""="" 
+                                            </code></pre>
                                             <p>The SQL above is valid and will return all rows from the "Users" table, since OR ""="" is always TRUE.</p>
                                             <h3>SQL Injection Based on Batched SQL Statements</h3>
                                             <p>Most databases support batched SQL statement.
@@ -794,34 +828,44 @@
                                                 A batch of SQL statements is a group of two or more SQL statements, separated by semicolons.
                                                 
                                                 The SQL statement below will return all rows from the "Users" table, then delete the "Suppliers" table.</p>
-                                                <code>SELECT * FROM Users; DROP TABLE Suppliers </code>
+                                                <pre><code>
+                                                    SELECT * FROM Users; DROP TABLE Suppliers 
+                                                </code></pre>
                                                 <p>Look at the following example: </p>
-                                                <code>txtUserId = getRequestString("UserId");
-                                                    txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;</code>
+                                                <pre><code>
+                                                    txtUserId = getRequestString("UserId");
+                                                    txtSQL = "SELECT * FROM Users WHERE UserId = " + txtUserId;
+                                                </code></pre>
                                                     <p>And the following input:
 
                                                         User id: 105; DROP TABLE Suppliers
                                                         
                                                         The valid SQL statement would look like this:</p>
-                                                        <code>SELECT * FROM Users WHERE UserId = 105; DROP TABLE Suppliers; </code>
+                                                        <pre><code>
+                                                            SELECT * FROM Users WHERE UserId = 105; DROP TABLE Suppliers; 
+                                                        </code></pre>
                                                         <h3>Use SQL Parameters for Protection</h3>
                                                         <p>To protect a web site from SQL injection, you can use SQL parameters.
 
                                                             SQL parameters are values that are added to an SQL query at execution time, in a controlled manner.</p>
                                                             <p>ASP.NET Razor Example</p>
-                                                            <code>txtUserId = getRequestString("UserId");
+                                                            <pre><code>
+                                                                txtUserId = getRequestString("UserId");
                                                                 txtSQL = "SELECT * FROM Users WHERE UserId = @0";
-                                                                db.Execute(txtSQL,txtUserId);</code>
+                                                                db.Execute(txtSQL,txtUserId);
+                                                            </code></pre>
                                                                 <p>Note that parameters are represented in the SQL statement by a @ marker.
 
                                                                     The SQL engine checks each parameter to ensure that it is correct for its column and are treated literally, and not as part of the SQL to be executed.
                                                                 
                                                                 Another Example</p>
-                                                                <code>txtNam = getRequestString("CustomerName");
+                                                                <pre><code>
+                                                                    txtNam = getRequestString("CustomerName");
                                                                     txtAdd = getRequestString("Address");
                                                                     txtCit = getRequestString("City");
                                                                     txtSQL = "INSERT INTO Customers (CustomerName,Address,City) Values(@0,@1,@2)";
-                                                                    db.Execute(txtSQL,txtNam,txtAdd,txtCit);</code>
+                                                                    db.Execute(txtSQL,txtNam,txtAdd,txtCit);
+                                                                </code></pre>
             <li></li>
 
         </section>
