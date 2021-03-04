@@ -38,7 +38,7 @@
             <header><h2>Create or Drop Database</h2></header>
             <h3>The SQL CREATE DATABASE Statement</h3>
             <p>The CREATE DATABASE statement is used to create a new SQL database.</p>
-            <code>CREATE DATABASE databasename;</code>
+            <pre><code>CREATE DATABASE databasename;</code></pre>
             <p class= "Tips_Notes">Tip: Always back up the database to a different drive than the actual database. Then, if you get a disk crash, you will not lose your backup file along with the database.</p>
             <p class="Tips_Notes">Tip: Make sure you have admin privilege before creating or dropping any database. Once a database is created or dropped, you can check it in the list of databases with the following SQL command: SHOW DATABASES;</p>
             <h3>The SQL DROP DATABASE Statement</h3>
@@ -52,8 +52,10 @@
             <header><h2>Backup Database</h2></header>
             <h3>The SQL BACKUP DATABASE Statement</h3>
             <p>The BACKUP DATABASE statement is used in SQL Server to create a full back up of an existing SQL database.</p>
-            <pre><code>BACKUP DATABASE databasename
-                       TO DISK = 'filepath'; </code></pre>
+            <pre><code>
+                BACKUP DATABASE databasename
+                TO DISK = 'filepath'; 
+                    </code></pre>
             <h2>The SQL BACKUP WITH DIFFERENTIAL Statement</h2>
             <p>A differential back up only backs up the parts of the database that have changed since the last full database backup.</p>
             <pre><code>
@@ -84,10 +86,12 @@
                     The new table gets the same column definitions. All columns or specific columns can be selected.
                     
                     If you create a new table using an existing table, the new table will be filled with the existing values from the old table.</p>
-                    <pre><code>CREATE TABLE new_table_name AS
-                          SELECT column1, column2,...
-                          FROM existing_table_name
-                          WHERE ....; </code></pre>
+                    <pre><code>
+                        CREATE TABLE new_table_name AS
+                        SELECT column1, column2,...
+                        FROM existing_table_name
+                        WHERE ....; 
+                    </code></pre>
                         <h3>The SQL DROP TABLE Statement</h3>
                         <p>The DROP TABLE statement is used to drop an existing table in a database.</p>
                         <pre><code>DROP TABLE table_name;</code></pre>
@@ -104,24 +108,34 @@
                 The ALTER TABLE statement is also used to add and drop various constraints on an existing table.
             
                 To add a column in a table, use the following syntax:</p>
-            <pre><code>ALTER TABLE table_name
-                ADD column_name datatype;</code></pre>
+            <pre><code>
+                ALTER TABLE table_name
+                ADD column_name datatype;
+            </code></pre>
             <h3>ALTER TABLE - DROP COLUMN</h3>
             <p>To delete a column in a table, use the following syntax (notice that some database systems don't allow deleting a column):</p>
-            <code>ALTER TABLE table_name
-                DROP COLUMN column_name;</code>
+            <pre><code>
+                ALTER TABLE table_name
+                DROP COLUMN column_name;
+            </code></pre>
                 <h3>ALTER TABLE - ALTER/MODIFY COLUMN</h3>
                 <p>To change the data type of a column in a table, use the following syntax:
 
                     SQL Server / MS Access:</p>
-                    <code>ALTER TABLE table_name
-                        ALTER COLUMN column_name datatype;</code>
+                    <pre><code>
+                        ALTER TABLE table_name
+                        ALTER COLUMN column_name datatype;
+                    </code></pre>
                         <p>My SQL / Oracle (prior version 10G):</p>
-                        <code>ALTER TABLE table_name
-                            MODIFY COLUMN column_name datatype;</code>
+                        <pre><code>
+                            ALTER TABLE table_name
+                            MODIFY COLUMN column_name datatype;
+                        </code></pre>
                             <p>Oracle 10G and later:</p>
-                            <code>ALTER TABLE table_name
-                                MODIFY column_name datatype;</code>
+                            <pre><code>
+                                ALTER TABLE table_name
+                                MODIFY column_name datatype;
+                            </code></pre>
                     
 
         </section>
@@ -130,12 +144,13 @@
             <h3>SQL Create Constraints</h3>
             <p>SQL constraints are used to specify rules for data in a table.
                 Constraints can be specified when the table is created with the CREATE TABLE statement, or after the table is created with the ALTER TABLE statement.</p>
-            <code>CREATE TABLE table_name (
+            <pre><code>CREATE TABLE table_name (
                 column1 datatype constraint,
                 column2 datatype constraint,
                 column3 datatype constraint,
                 ....
-            );</code>
+                );
+            </code></pre>
             <h3>SQL Constraints</h3>
             <p>SQL constraints are used to specify rules for the data in a table.
 
@@ -165,16 +180,20 @@
                 This enforces a field to always contain a value, which means that you cannot insert a new record, or update a record without adding a value to this field.</p>
                 <h3>SQL NOT NULL on CREATE TABLE</h3>
             <p>The following SQL ensures that the "ID", "LastName", and "FirstName" columns will NOT accept NULL values when the "Persons" table is created:</p>
-            <code>CREATE TABLE Persons (
+            <pre><code>
+                CREATE TABLE Persons (
                 ID int NOT NULL,
                 LastName varchar(255) NOT NULL,
                 FirstName varchar(255) NOT NULL,
                 Age int
-            ); </code>
+                ); 
+            </code></pre>
             <h3>SQL NOT NULL on ALTER TABLE</h3>
             <p>To create a NOT NULL constraint on the "Age" column when the "Persons" table is already created, use the following SQL:</p>
-            <code>ALTER TABLE Persons
-                MODIFY Age int NOT NULL;</code>
+            <pre><code>
+                ALTER TABLE Persons
+                MODIFY Age int NOT NULL;
+            </code></pre>
                 <h3>SQL UNIQUE Constraint</h3>
                 <p>The UNIQUE constraint ensures that all values in a column are different.
 
@@ -187,50 +206,64 @@
                     <p>The following SQL creates a UNIQUE constraint on the "ID" column when the "Persons" table is created:
 
                         SQL Server / Oracle / MS Access:</p>
-                        <code>CREATE TABLE Persons (
+                        <pre><code>
+                            CREATE TABLE Persons (
                             ID int NOT NULL UNIQUE,
                             LastName varchar(255) NOT NULL,
                             FirstName varchar(255),
                             Age int
-                        );</code>
+                            );
+                        </code></pre>
                         <p>MySQL:</p>
-                        <code>CREATE TABLE Persons (
+                        <pre><code>
+                            CREATE TABLE Persons (
                             ID int NOT NULL,
                             LastName varchar(255) NOT NULL,
                             FirstName varchar(255),
                             Age int,
                             UNIQUE (ID)
-                        ); </code>
+                            ); 
+                        </code></pre>
                         <p>To name a UNIQUE constraint, and to define a UNIQUE constraint on multiple columns, use the following SQL syntax:
 
                             MySQL / SQL Server / Oracle / MS Access:</p>
-                            <code>CREATE TABLE Persons (
+                            <pre><code>
+                                CREATE TABLE Persons (
                                 ID int NOT NULL,
                                 LastName varchar(255) NOT NULL,
                                 FirstName varchar(255),
                                 Age int,
                                 CONSTRAINT UC_Person UNIQUE (ID,LastName)
-                            ); </code>
+                                ); 
+                            </code></pre>
                             <h3>SQL UNIQUE Constraint on ALTER TABLE</h3>
                             <p>To create a UNIQUE constraint on the "ID" column when the table is already created, use the following SQL:
 
                                 MySQL / SQL Server / Oracle / MS Access:</p>
-                                <code>ALTER TABLE Persons
-                                    ADD UNIQUE (ID); </code>
+                                <pre><code>
+                                    ALTER TABLE Persons
+                                    ADD UNIQUE (ID); 
+                                </code></pre>
                                     <p>To name a UNIQUE constraint, and to define a UNIQUE constraint on multiple columns, use the following SQL syntax:
 
                                         MySQL / SQL Server / Oracle / MS Access:</p>
-                                        <code>ALTER TABLE Persons
-                                            ADD CONSTRAINT UC_Person UNIQUE (ID,LastName); </code>
+                                        <pre><code>
+                                            ALTER TABLE Persons
+                                            ADD CONSTRAINT UC_Person UNIQUE (ID,LastName); 
+                                        </code></pre>
                                             <h3>DROP a UNIQUE Constraint</h3>
                                             <p>To drop a UNIQUE constraint, use the following SQL:
 
                                                 MySQL:</p>
-                                                <code>ALTER TABLE Persons
-                                                    DROP INDEX UC_Person; </code>
+                                                <pre><code>
+                                                    ALTER TABLE Persons
+                                                    DROP INDEX UC_Person; 
+                                                </code></pre>
                                                 <p>SQL Server / Oracle / MS Access:</p>
-                                                <code>ALTER TABLE Persons
-                                                    DROP CONSTRAINT UC_Person; </code>
+                                                <pre><code>
+                                                    ALTER TABLE Persons
+                                                    DROP CONSTRAINT UC_Person; 
+                                                </code></pre>
 
 
         </section>
@@ -246,53 +279,67 @@
             <p>The following SQL creates a PRIMARY KEY on the "ID" column when the "Persons" table is created:
 
                 MySQL:</p>
-            <code>CREATE TABLE Persons (
+            <pre><code>
+                CREATE TABLE Persons (
                 ID int NOT NULL,
                 LastName varchar(255) NOT NULL,
                 FirstName varchar(255),
                 Age int,
                 PRIMARY KEY (ID)
-            ); </code>
+                ); 
+            </code></pre>
             <p>SQL Server / Oracle / MS Access:</p>
-            <code>CREATE TABLE Persons (
+            <pre><code>
+                CREATE TABLE Persons (
                 ID int NOT NULL PRIMARY KEY,
                 LastName varchar(255) NOT NULL,
                 FirstName varchar(255),
                 Age int
-            ); </code>
+                ); 
+            </code></pre>
             <p>To allow naming of a PRIMARY KEY constraint, and for defining a PRIMARY KEY constraint on multiple columns, use the following SQL syntax:
 
                 MySQL / SQL Server / Oracle / MS Access:</p>
-                <code>CREATE TABLE Persons (
+                <pre><code>
+                    CREATE TABLE Persons (
                     ID int NOT NULL,
                     LastName varchar(255) NOT NULL,
                     FirstName varchar(255),
                     Age int,
                     CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
-                ); </code>
+                    ); 
+                </code></pre>
                 <p class="Tips_Notes">Note: In the example above there is only ONE PRIMARY KEY (PK_Person). However, the VALUE of the primary key is made up of TWO COLUMNS (ID + LastName).
                 </p>
                 <h3>SQL PRIMARY KEY on ALTER TABLE</h3>
                 <p>To create a PRIMARY KEY constraint on the "ID" column when the table is already created, use the following SQL:
 
                     MySQL / SQL Server / Oracle / MS Access:</p>
-                    <code>ALTER TABLE Persons
-                        ADD PRIMARY KEY (ID);</code>
+                    <pre><code>
+                        ALTER TABLE Persons
+                        ADD PRIMARY KEY (ID);
+                    </code></pre>
                         <p>To allow naming of a PRIMARY KEY constraint, and for defining a PRIMARY KEY constraint on multiple columns, use the following SQL syntax:
 
                             MySQL / SQL Server / Oracle / MS Access:</p>
-                            <code>ALTER TABLE Persons
-                                ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);</code>
+                            <pre><code>
+                                ALTER TABLE Persons
+                                ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName);
+                            </code></pre>
                                 <p class="Tips_Notes">Note: If you use the ALTER TABLE statement to add a primary key, the primary key column(s) must already have been declared to not contain NULL values (when the table was first created).</p>
                                 <h3>DROP a PRIMARY KEY Constraint</h3>
                                 <p>To drop a PRIMARY KEY constraint, use the following SQL:
 
                                     MySQL:</p>
-                                    <code>ALTER TABLE Persons
-                                        DROP PRIMARY KEY; </code>
+                                    <pre><code>
+                                        ALTER TABLE Persons
+                                        DROP PRIMARY KEY; 
+                                    </code></pre>
                                         <p>SQL Server / Oracle / MS Access:</p>
-                                        <code>ALTER TABLE Persons
-                                            DROP CONSTRAINT PK_Person; </code>
+                                        <pre><code>
+                                            ALTER TABLE Persons
+                                            DROP CONSTRAINT PK_Person; 
+                                        </code></pre>
             
 
         </section>
@@ -312,51 +359,65 @@
             <p>The following SQL creates a FOREIGN KEY on the "PersonID" column when the "Orders" table is created:
 
                 MySQL:</p>
-            <code>CREATE TABLE Orders (
+            <pre><code>
+                CREATE TABLE Orders (
                 OrderID int NOT NULL,
                 OrderNumber int NOT NULL,
                 PersonID int,
                 PRIMARY KEY (OrderID),
                 FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
-            ); </code>
+                ); 
+            </code></pre>
             <p>SQL Server / Oracle / MS Access:</p>
-            <code>CREATE TABLE Orders (
+            <pre><code>
+                CREATE TABLE Orders (
                 OrderID int NOT NULL PRIMARY KEY,
                 OrderNumber int NOT NULL,
                 PersonID int FOREIGN KEY REFERENCES Persons(PersonID)
-            ); </code>
+                ); 
+            </code></pre>
             <p>To allow naming of a FOREIGN KEY constraint, and for defining a FOREIGN KEY constraint on multiple columns, use the following SQL syntax:
 
                 MySQL / SQL Server / Oracle / MS Access:</p>
-                <code>CREATE TABLE Orders (
+                <pre><code>
+                    CREATE TABLE Orders (
                     OrderID int NOT NULL,
                     OrderNumber int NOT NULL,
                     PersonID int,
                     PRIMARY KEY (OrderID),
                     CONSTRAINT FK_PersonOrder FOREIGN KEY (PersonID)
                     REFERENCES Persons(PersonID)
-                ); </code>
+                    ); 
+                </code></pre>
                 <h3>SQL FOREIGN KEY on ALTER TABLE</h3>
                 <p>To create a FOREIGN KEY constraint on the "PersonID" column when the "Orders" table is already created, use the following SQL:
 
                     MySQL / SQL Server / Oracle / MS Access:</p>
-                    <code>ALTER TABLE Orders
-                        ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID); </code>
+                    <pre><code>
+                        ALTER TABLE Orders
+                        ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID); 
+                    </code></pre>
                         <p>To allow naming of a FOREIGN KEY constraint, and for defining a FOREIGN KEY constraint on multiple columns, use the following SQL syntax:
 
                             MySQL / SQL Server / Oracle / MS Access:</p>
-                            <code>ALTER TABLE Orders
+                            <pre><code>
+                                ALTER TABLE Orders
                                 ADD CONSTRAINT FK_PersonOrder
-                                FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);</code>
+                                FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+                            </code></pre>
                                 <h3>DROP a FOREIGN KEY Constraint</h3>
                                 <p>To drop a FOREIGN KEY constraint, use the following SQL:
 
                                     MySQL:</p>
-                                    <code>ALTER TABLE Orders
-                                        DROP FOREIGN KEY FK_PersonOrder; </code>
+                                    <pre><code>
+                                        ALTER TABLE Orders
+                                        DROP FOREIGN KEY FK_PersonOrder; 
+                                    </code></pre>
                                         <p>SQL Server / Oracle / MS Access:</p>
-                                        <code>ALTER TABLE Orders
-                                            DROP CONSTRAINT FK_PersonOrder;</code>
+                                        <pre><code>
+                                            ALTER TABLE Orders
+                                            DROP CONSTRAINT FK_PersonOrder;
+                                        </code></pre>
             
 
         </section>
@@ -372,51 +433,65 @@
             <p>The following SQL creates a CHECK constraint on the "Age" column when the "Persons" table is created. The CHECK constraint ensures that the age of a person must be 18, or older:
 
                 MySQL:</p>
-                <code>CREATE TABLE Persons (
+                <pre><code>
+                    CREATE TABLE Persons (
                     ID int NOT NULL,
                     LastName varchar(255) NOT NULL,
                     FirstName varchar(255),
                     Age int,
                     CHECK (Age>=18)
-                ); </code>
+                    ); 
+                </code></pre>
                 <p>SQL Server / Oracle / MS Access:</p>
-            <code>CREATE TABLE Persons (
+            <pre><code>
+                CREATE TABLE Persons (
                 ID int NOT NULL,
                 LastName varchar(255) NOT NULL,
                 FirstName varchar(255),
                 Age int CHECK (Age>=18)
-            ); </code>
+                ); 
+            </code></pre>
             <p>To allow naming of a CHECK constraint, and for defining a CHECK constraint on multiple columns, use the following SQL syntax:
 
                 MySQL / SQL Server / Oracle / MS Access:</p>
-                <code>CREATE TABLE Persons (
+                <pre><code>
+                    CREATE TABLE Persons (
                     ID int NOT NULL,
                     LastName varchar(255) NOT NULL,
                     FirstName varchar(255),
                     Age int,
                     City varchar(255),
                     CONSTRAINT CHK_Person CHECK (Age>=18 AND City='Sandnes')
-                ); </code>
+                    ); 
+                </code></pre>
                 <h3>SQL CHECK on ALTER TABLE</h3>
                 <p>To create a CHECK constraint on the "Age" column when the table is already created, use the following SQL:
 
                     MySQL / SQL Server / Oracle / MS Access:</p>
-                    <code>ALTER TABLE Persons
-                        ADD CHECK (Age>=18); </code>
+                    <pre><code>
+                        ALTER TABLE Persons
+                        ADD CHECK (Age>=18); 
+                    </code></pre>
                         <p>To allow naming of a CHECK constraint, and for defining a CHECK constraint on multiple columns, use the following SQL syntax:
 
                             MySQL / SQL Server / Oracle / MS Access:</p>
-                            <code>ALTER TABLE Persons
-                                ADD CONSTRAINT CHK_PersonAge CHECK (Age>=18 AND City='Sandnes');</code>
+                            <pre><code>
+                                ALTER TABLE Persons
+                                ADD CONSTRAINT CHK_PersonAge CHECK (Age>=18 AND City='Sandnes');
+                            </code></pre>
                                 <h3>DROP a CHECK Constraint</h3>
                                 <p>To drop a CHECK constraint, use the following SQL:
 
                                     SQL Server / Oracle / MS Access:</p>
-                                    <code>ALTER TABLE Persons
-                                        DROP CONSTRAINT CHK_PersonAge; </code>
+                                    <pre><code>
+                                        ALTER TABLE Persons
+                                        DROP CONSTRAINT CHK_PersonAge; 
+                                    </code></pre>
                                         <p>MySQL:</p>
-                                        <code>ALTER TABLE Persons
-                                            DROP CHECK CHK_PersonAge;</code>
+                                        <pre><code>
+                                            ALTER TABLE Persons
+                                            DROP CHECK CHK_PersonAge;
+                                        </code></pre>
 
         </section>
         <section id="Default" class="main-section">
@@ -429,44 +504,60 @@
             <p>The following SQL sets a DEFAULT value for the "City" column when the "Persons" table is created:
 
                 My SQL / SQL Server / Oracle / MS Access:</p>
-            <code>CREATE TABLE Persons (
+            <pre><code>
+                CREATE TABLE Persons (
                 ID int NOT NULL,
                 LastName varchar(255) NOT NULL,
                 FirstName varchar(255),
                 Age int,
                 City varchar(255) DEFAULT 'Sandnes'
-            ); </code>
+                ); 
+            </code></pre>
             <p>The DEFAULT constraint can also be used to insert system values, by using functions like GETDATE():</p>
-            <code>CREATE TABLE Orders (
+            <pre><code>
+                CREATE TABLE Orders (
                 ID int NOT NULL,
                 OrderNumber int NOT NULL,
                 OrderDate date DEFAULT GETDATE()
-            ); </code>
+                ); 
+            </code></pre>
             <h3>SQL DEFAULT on ALTER TABLE</h3>
             <p>To create a DEFAULT constraint on the "City" column when the table is already created, use the following SQL:
 
                 MySQL:</p>
-                <code>ALTER TABLE Persons
-                    ALTER City SET DEFAULT 'Sandnes'; </code>
+                <pre><code>
+                    ALTER TABLE Persons
+                    ALTER City SET DEFAULT 'Sandnes'; 
+                </code></pre>
                     <p>SQL Server:</p>
-                    <code>ALTER TABLE Persons
+                    <pre><code>
+                        ALTER TABLE Persons
                         ADD CONSTRAINT df_City
-                        DEFAULT 'Sandnes' FOR City; </code>
+                        DEFAULT 'Sandnes' FOR City; 
+                    </code></pre>
                         <p>MS Access:</p>
-                        <code>ALTER TABLE Persons
-                            ALTER COLUMN City SET DEFAULT 'Sandnes'; </code>
+                        <pre><code>
+                            ALTER TABLE Persons
+                            ALTER COLUMN City SET DEFAULT 'Sandnes'; 
+                        </code></pre>
                             <p>Oracle:</p>
-                            <code>ALTER TABLE Persons
-                                MODIFY City DEFAULT 'Sandnes'; </code>
+                            <pre><code>
+                                ALTER TABLE Persons
+                                MODIFY City DEFAULT 'Sandnes'; 
+                            </code></pre>
                                 <h3>DROP a DEFAULT Constraint</h3>
                                 <p>To drop a DEFAULT constraint, use the following SQL:
 
                                     MySQL:</p>
-                                    <code>ALTER TABLE Persons
-                                        ALTER City DROP DEFAULT; </code>
+                                    <pre><code>
+                                        ALTER TABLE Persons
+                                        ALTER City DROP DEFAULT; 
+                                    </code></pre>
                                         <p>SQL Server / Oracle / MS Access:</p>
-                                        <code>ALTER TABLE Persons
-                                            ALTER COLUMN City DROP DEFAULT; </code>
+                                        <pre><code>
+                                            ALTER TABLE Persons
+                                            ALTER COLUMN City DROP DEFAULT; 
+                                        </code></pre>
 
         </section>
         <section id="Index" class="main-section">
@@ -478,26 +569,37 @@
             <p class="Tips_Notes">Note: Updating a table with indexes takes more time than updating a table without (because the indexes also need an update). So, only create indexes on columns that will be frequently searched against.</p>
             <h3>CREATE INDEX Syntax</h3>
             <p>Creates an index on a table. Duplicate values are allowed:</p>
-            <code>CREATE INDEX index_name
-                ON table_name (column1, column2, ...); </code>
+            <pre><code>
+                CREATE INDEX index_name
+                ON table_name (column1, column2, ...); 
+            </code></pre>
                 <h3>CREATE UNIQUE INDEX Syntax</h3>
                 <p>Creates a unique index on a table. Duplicate values are not allowed:</p>
-                <code>CREATE UNIQUE INDEX index_name
-                    ON table_name (column1, column2, ...); </code>
+                <pre><code>
+                    CREATE UNIQUE INDEX index_name
+                    ON table_name (column1, column2, ...); 
+                </code></pre>
                     <p class="Tips_Notes">Note: The syntax for creating indexes varies among different databases. Therefore: Check the syntax for creating indexes in your database.</p>
                     <h3>DROP INDEX Statement</h3>
                     <p>The DROP INDEX statement is used to delete an index in a table.
 
                         MS Access:</p>
-                        <code>DROP INDEX index_name ON table_name; </code>
+                        <pre><code>
+                            DROP INDEX index_name ON table_name; 
+                        </code></pre>
                         <p>SQL Server:</p>
-                        <code>DROP INDEX table_name.index_name; </code>
+                        <pre><code>
+                            DROP INDEX table_name.index_name; 
+                        </code></pre>
                         <p>DB2/Oracle:</p>
-                        <code>DROP INDEX index_name; </code>
+                        <pre><code>
+                            DROP INDEX index_name; 
+                        </code></pre>
                         <p>MySQL:</p>
-                        <code>ALTER TABLE table_name
-                            DROP INDEX index_name; </code>
-            <li></li>
+                        <pre><code>
+                            ALTER TABLE table_name
+                            DROP INDEX index_name; 
+                        </code></pre>
 
         </section>
         <section id="Auto_Increment" class="main-section">
@@ -508,13 +610,15 @@
                 Often this is the primary key field that we would like to be created automatically every time a new record is inserted.</p>
                 <h3>Syntax for MySQL</h3>
             <p>The following SQL statement defines the "Personid" column to be an auto-increment primary key field in the "Persons" table:</p>
-            <code>CREATE TABLE Persons (
+            <pre><code>
+                CREATE TABLE Persons (
                 Personid int NOT NULL AUTO_INCREMENT,
                 LastName varchar(255) NOT NULL,
                 FirstName varchar(255),
                 Age int,
                 PRIMARY KEY (Personid)
-            ); </code>
+                ); 
+            </code></pre>
             <p>MySQL uses the AUTO_INCREMENT keyword to perform an auto-increment feature.
 
                 By default, the starting value for AUTO_INCREMENT is 1, and it will increment by 1 for each new record.
