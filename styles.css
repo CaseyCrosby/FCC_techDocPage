@@ -94,12 +94,12 @@ h3 {
 code {
     display: block;
     background-color: rgb(54, 54, 54);
-    color: teal;
+    color:goldenrod;
     font-weight: 1000;
     letter-spacing: 1%;
     border-radius: ;
     padding: 2em;
     margin: 1em;
-    width: 30%;
+    width: 80%;
 }
     
