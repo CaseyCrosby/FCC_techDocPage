@@ -20,7 +20,7 @@ body {
 
 #navbar header {
     text-align: center;
-    background-color: teal;
+    background-color: rgb(54, 54, 54);
     position: fixed;
     padding-top: 1%;
     padding-bottom: 1%;
@@ -31,10 +31,12 @@ body {
     font-weight: bolder;
 }
 
+
+
 .nav-top {
     list-style: none;
     text-decoration: none;
-    color: black;
+    color: goldenrod;
     outline: none;
 }
 
@@ -53,7 +55,8 @@ body {
 }
 
  .nav_ul li:hover {
-    background-color: rgb(197, 195, 195);
+    background-color: ;
+    box-shadow: 0px 0px 5px 5px rgba(54, 54, 54, 0.2);
 }
 
 h1 {
@@ -61,6 +64,7 @@ h1 {
     margin-top: 0;
     padding-top: .5em;
     padding-bottom: .5em;
+    text-shadow: goldenrod;
 }
 
 h2 {
@@ -100,6 +104,6 @@ code {
     border-radius: ;
     padding: 2em;
     margin: 1em;
-    width: 80%;
+    width: auto;
 }
     
