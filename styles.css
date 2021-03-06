@@ -42,7 +42,7 @@ body {
 
 .nav_ul {
     list-style: none;
-    margin-top: 30%;
+    margin-top: 80px;
     padding: 0;
 }
 
@@ -106,5 +106,33 @@ code {
     padding: 2em;
     margin: 0;
     width: auto;
+}
+
+@media screen and (max-width: 815px) {
+
+    #navbar {
+        position: absolute;
+        width: 100%;
+        height: 30%;
+    }
+
+    #navbar header {
+        width: 100%;
+    }
+
+    .main-doc {
+        margin-left: 0px;
+        padding-left: 0px;
+        margin-top: auto;
+    }
+
+    .main-section {
+        padding-left: 0px;
+        margin-left: 0px;
+    }
+
+    h1 {
+        margin-left: 0px;
+    }
 }
     
