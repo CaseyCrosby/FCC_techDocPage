@@ -63,7 +63,6 @@ h1 {
     margin-top: 0;
     padding-top: .5em;
     padding-bottom: .5em;
-    text-shadow: goldenrod;
 }
 
 h2 {
@@ -101,12 +100,14 @@ code {
     display: block;
     background-color: rgb(54, 54, 54);
     color:goldenrod;
-    font-weight: 1000;
-    letter-spacing: 1%;
+    font-weight: 900;
     padding: 2em;
     margin: 0px;
     width: auto;
-    overflow:
+}
+
+#CSS_Validation {
+    text-align: center;
 }
 
 @media screen and (max-width: 815px) {
