@@ -106,22 +106,26 @@ code {
     padding: 2em;
     margin: 0px;
     width: auto;
-    overflow: auto;
-    word-wrap: normal;
-    
+    overflow:
 }
 
 @media screen and (max-width: 815px) {
 
+    body {
+        font-size: 14px;
+    }
+
     #navbar {
         position: fixed;
         width: 100%;
-        height: 30%;
+        height: 25%;
         border-bottom: 2px solid black;
     }
 
     #navbar header {
         width: 100%;
+        padding-top: 2em;
+        height: 2em;
     }
 
     #main-doc {
@@ -137,6 +141,12 @@ code {
 
     h1 {
         margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    body {
+        font-size: 12px;
     }
 }
     
